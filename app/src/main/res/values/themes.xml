@@ -13,4 +13,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="CustomCardCorners" parent="@style/CardView">
+        <item name="shapeAppearanceOverlay">@style/account_detail_custom_corner</item>
+    </style>
+
+    <style name="account_detail_custom_corner" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">400dp</item>
+        <item name="cornerSizeBottomRight">400dp</item>
+    </style>
 </resources>
