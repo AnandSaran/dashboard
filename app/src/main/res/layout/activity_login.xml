@@ -46,8 +46,12 @@
         app:layout_constraintTop_toBottomOf="@id/glTop">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUserName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,22 +61,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:hint="@string/password"
         app:layout_constraintLeft_toRightOf="@id/glLeft"
         app:layout_constraintRight_toLeftOf="@id/glRight"
-        android:hint="@string/password"
         app:layout_constraintTop_toBottomOf="@id/tilUserName">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
-        android:text="@string/login"
         android:layout_marginBottom="10dp"
+        android:text="@string/login"
         android:textSize="@dimen/button_text_size"
         app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintBottom_toTopOf="@id/btnRegister"
@@ -84,12 +92,12 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
-        app:layout_constraintLeft_toRightOf="@id/glLeft"
-        app:layout_constraintRight_toLeftOf="@id/glRight"
-        app:strokeWidth="2dp"
-        android:textSize="@dimen/button_text_size"
         android:text="@string/register"
         android:textColor="@color/black"
+        android:textSize="@dimen/button_text_size"
         app:cornerRadius="@dimen/button_corner_radius"
-        app:layout_constraintBottom_toTopOf="@id/glBottom" />
+        app:layout_constraintBottom_toTopOf="@id/glBottom"
+        app:layout_constraintLeft_toRightOf="@id/glLeft"
+        app:layout_constraintRight_toLeftOf="@id/glRight"
+        app:strokeWidth="2dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

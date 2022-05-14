@@ -1,8 +1,10 @@
 package com.work.dashboard.dashboard.view.activity
 
+import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.CornerSize
@@ -14,9 +16,18 @@ import com.work.dashboard.databinding.ActivityDashboardBinding
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
+
+    companion object {
+        fun present(context: Context, bundle: Bundle) {
+            val intent = Intent(context, DashboardActivity::class.java)
+            intent.putExtras(bundle)
+            context.startActivity(intent)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDashboardBinding.inflate(layoutInflater);
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = getString(R.string.dashboard)
         setAccountInfoCardViewCornerRadius()
