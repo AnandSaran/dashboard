@@ -9,9 +9,9 @@ import com.work.dashboard.base.BaseActivity
 import com.work.dashboard.base.BaseResult
 import com.work.dashboard.dashboard.view.activity.DashboardActivity
 import com.work.dashboard.databinding.ActivityLoginBinding
-import com.work.dashboard.login.viiewmodel.RegisterViewModel
-import com.work.dashboard.login.viiewmodel.RegisterViewModel.FormErrors.INVALID_PASSWORD
-import com.work.dashboard.login.viiewmodel.RegisterViewModel.FormErrors.INVALID_USER_NAME
+import com.work.dashboard.login.viiewmodel.LoginViewModel
+import com.work.dashboard.login.viiewmodel.LoginViewModel.FormErrors.INVALID_PASSWORD
+import com.work.dashboard.login.viiewmodel.LoginViewModel.FormErrors.INVALID_USER_NAME
 import com.work.dashboard.network.repository.LoginRepository
 import com.work.dashboard.network.resposne.LoginResponse
 import com.work.dashboard.register.view.RegisterActivity
@@ -22,12 +22,12 @@ import com.work.dashboard.util.constants.VIEW_MODEL_IN_ACCESSIBLE_MESSAGE
 
 class LoginActivity : BaseActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var viewModelFactory: RegisterViewModel.Factory
-    private val viewModel: RegisterViewModel by lazy {
+    private lateinit var viewModelFactory: LoginViewModel.Factory
+    private val viewModel: LoginViewModel by lazy {
         requireNotNull(this) {
             VIEW_MODEL_IN_ACCESSIBLE_MESSAGE
         }
-        ViewModelProvider(this, viewModelFactory)[RegisterViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +57,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun setupViewModelObserver() {
-        viewModel.formErrors.observe(this, Observer { formErrors ->
+        viewModel.formErrors.observe(this, { formErrors ->
             formErrors?.let {
                 formErrors.forEach { formError ->
                     when (formError) {
@@ -88,12 +88,12 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun setupViewModelFactory() {
-        viewModelFactory = RegisterViewModel.Factory(LoginRepository())
+        viewModelFactory = LoginViewModel.Factory(LoginRepository())
     }
 
     private fun onClickLogin() {
         if (viewModel.validateForm()) {
-            viewModel.login().observe(this, Observer {
+            viewModel.login().observe(this, {
                 when (it.status) {
                     BaseResult.Status.SUCCESS -> {
                         dismissProgressBar()

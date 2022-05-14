@@ -20,4 +20,8 @@ const val BUNDLE_KEY_TOKEN="BUNDLE_KEY_TOKEN"
 const val BUNDLE_KEY_USER_NAME="BUNDLE_KEY_USER_NAME"
 const val BUNDLE_KEY_USER_ACCOUNT_NO="BUNDLE_KEY_USER_ACCOUNT_NO"
 
+//message
+const val MSG_REGISTER_SUCCESS="Registration success, Please do Login"
+
+
 

@@ -1,17 +1,18 @@
-package com.work.dashboard.login.viiewmodel
+package com.work.dashboard.register.viewmodel
 
 import androidx.lifecycle.*
 import com.work.dashboard.base.BaseResult
 import com.work.dashboard.network.repository.LoginRepository
-import com.work.dashboard.network.request.LoginRequest
-import com.work.dashboard.network.resposne.LoginResponse
+import com.work.dashboard.network.request.RegisterRequest
+import com.work.dashboard.network.resposne.RegisterResponse
 import com.work.dashboard.util.constants.*
 import kotlinx.coroutines.Dispatchers
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class RegisterViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
     private val userName: MutableLiveData<String> = MutableLiveData()
     private val password: MutableLiveData<String> = MutableLiveData()
+    private val confirmPassword: MutableLiveData<String> = MutableLiveData()
 
     val formErrors = MutableLiveData<ArrayList<FormErrors>>()
 
@@ -24,6 +25,13 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         if (password.value.isNullOrEmpty()) {
             formErrors.add(FormErrors.INVALID_PASSWORD)
         }
+        if (confirmPassword.value.isNullOrEmpty()) {
+            formErrors.add(FormErrors.INVALID_CONFIRM_PASSWORD)
+        }
+
+        if (password.value != confirmPassword.value) {
+            formErrors.add(FormErrors.PASSWORD_NOT_MATCH)
+        }
         updateFormErrors(formErrors)
         return formErrors.isEmpty()
     }
@@ -32,35 +40,35 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         formErrors.value = value
     }
 
-    fun login() =
+    fun register() =
         liveData(Dispatchers.IO) {
             emit(BaseResult.loading(null))
-            val result = loginRepository.login(
-                generateLoginRequest()
+            val result = loginRepository.register(
+                generateRegisterRequest()
             )
             when (result.status) {
                 BaseResult.Status.SUCCESS -> {
-                    onLoginSuccess(result)
+                    onRegisterSuccess(result)
                 }
                 BaseResult.Status.ERROR -> {
-                    onLoginFail(result.message)
+                    onRegisterFail(result.message)
                 }
                 else -> {
                 }
             }
         }
 
-    private suspend fun LiveDataScope<BaseResult<LoginResponse>>.onLoginSuccess(result: BaseResult<LoginResponse>) {
+    private suspend fun LiveDataScope<BaseResult<RegisterResponse>>.onRegisterSuccess(result: BaseResult<RegisterResponse>) {
         result.data?.let {
             emit(BaseResult.success(data = it))
         }
     }
 
-    private suspend fun LiveDataScope<BaseResult<LoginResponse>>.onLoginFail(message: String) {
+    private suspend fun LiveDataScope<BaseResult<RegisterResponse>>.onRegisterFail(message: String) {
         emit(BaseResult.error(message))
     }
 
-    private fun generateLoginRequest() = LoginRequest(
+    private fun generateRegisterRequest() = RegisterRequest(
         userName.value ?: EMPTY_STRING,
         password.value ?: EMPTY_STRING,
     )
@@ -73,17 +81,23 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         password.value = value
     }
 
+    fun updateConfirmPassword(value: String) {
+        confirmPassword.value = value
+    }
+
     enum class FormErrors(val value: String) {
         INVALID_USER_NAME(ERROR_USER_NAME),
         INVALID_PASSWORD(ERROR_PASSWORD),
+        INVALID_CONFIRM_PASSWORD(ERROR_CONFIRM_PASSWORD),
+        PASSWORD_NOT_MATCH(ERROR_PASSWORD_NOT_MATCH),
     }
 
     @Suppress(ANNOTATION_UNCHECKED_CAST)
     class Factory(private val loginRepository: LoginRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-                return LoginViewModel(loginRepository) as T
+            if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
+                return RegisterViewModel(loginRepository) as T
             }
             throw IllegalArgumentException(UNKNOWN_VIEW_MODEL_CLASS)
         }
