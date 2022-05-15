@@ -104,7 +104,6 @@
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/glCvLeft"
                 app:layout_constraintRight_toLeftOf="@id/glCvRight"
-
                 app:layout_constraintTop_toBottomOf="@id/tvTitleBalance"
                 tools:text="@string/account_balance_amount" />
 
@@ -114,9 +113,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/account_no"
+                android:textColor="@color/grey_dark"
                 android:textSize="13sp"
                 app:layout_constraintLeft_toRightOf="@id/glCvLeft"
-
                 app:layout_constraintRight_toLeftOf="@id/glCvRight"
                 app:layout_constraintTop_toBottomOf="@id/tvBalance" />
 
@@ -124,13 +123,11 @@
                 android:id="@+id/tvAccountNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="4dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/glCvLeft"
-
                 app:layout_constraintRight_toLeftOf="@id/glCvRight"
                 app:layout_constraintTop_toBottomOf="@id/tvAccountNumberTitle"
                 tools:text="3213-321-9923" />
@@ -141,9 +138,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/account_holder"
+                android:textColor="@color/grey_dark"
                 android:textSize="13sp"
                 app:layout_constraintLeft_toRightOf="@id/glCvLeft"
-
                 app:layout_constraintRight_toLeftOf="@id/glCvRight"
                 app:layout_constraintTop_toBottomOf="@id/tvAccountNumber" />
 
@@ -164,11 +161,14 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTransactions"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="true"
+        android:orientation="vertical"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/btnMakeTransfer"
         app:layout_constraintLeft_toLeftOf="@id/glLeft"
         app:layout_constraintRight_toRightOf="@id/glRight"

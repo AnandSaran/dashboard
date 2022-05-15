@@ -10,6 +10,7 @@
     <string name="register">Register</string>
     <string name="make_transfer">Make Transfer</string>
     <string name="transfer_now">Transfer Now</string>
+    <string name="transfer">Transfer</string>
     <string name="you_have">You Have</string>
     <string name="account_balance_amount">SGD 21,421.33</string>
     <string name="account_no">Account No</string>
