@@ -17,9 +17,7 @@ import com.work.dashboard.base.BaseResult
 import com.work.dashboard.dashboard.view.viewmodel.DashboardViewModel
 import com.work.dashboard.databinding.ActivityDashboardBinding
 import com.work.dashboard.network.repository.AccountRepository
-import com.work.dashboard.network.resposne.BalanceResponse
 import com.work.dashboard.network.resposne.Data
-import com.work.dashboard.register.view.RegisterActivity
 import com.work.dashboard.transfer.activity.TransferActivity
 import com.work.dashboard.util.constants.*
 
@@ -122,9 +120,9 @@ class DashboardActivity : BaseActivity() {
         }
     }
 
-    private fun handleBalanceResponse(response: BalanceResponse?) {
-        response?.let {
-            setAccountBalance(it.balance)
+    private fun handleBalanceResponse(balance: String?) {
+        balance?.let {
+            setAccountBalance(balance)
         }
     }
 

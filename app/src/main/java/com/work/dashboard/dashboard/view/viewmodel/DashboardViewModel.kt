@@ -9,10 +9,7 @@ import com.work.dashboard.network.repository.AccountRepository
 import com.work.dashboard.network.resposne.BalanceResponse
 import com.work.dashboard.network.resposne.Data
 import com.work.dashboard.network.resposne.TransactionResponse
-import com.work.dashboard.util.constants.ANNOTATION_UNCHECKED_CAST
-import com.work.dashboard.util.constants.DP_DATE
-import com.work.dashboard.util.constants.DP_DATE_TIME
-import com.work.dashboard.util.constants.UNKNOWN_VIEW_MODEL_CLASS
+import com.work.dashboard.util.constants.*
 import kotlinx.coroutines.Dispatchers
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,9 +48,9 @@ class DashboardViewModel(private val accountRepository: AccountRepository) : Vie
             }
         }
 
-    private suspend fun LiveDataScope<BaseResult<BalanceResponse>>.onFetchBalanceSuccess(result: BaseResult<BalanceResponse>) {
+    private suspend fun LiveDataScope<BaseResult<String>>.onFetchBalanceSuccess(result: BaseResult<BalanceResponse>) {
         result.data?.let {
-            emit(BaseResult.success(data = it))
+            emit(BaseResult.success(data = CURRENCY_SGD + SYMBOL_SINGLE_SPACE + it.balance))
         }
     }
 

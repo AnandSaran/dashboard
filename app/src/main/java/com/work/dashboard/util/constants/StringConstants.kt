@@ -33,6 +33,10 @@ const val SYMBOL_SINGLE_SPACE=" "
 
 //Transaction type
 const val TRANSACTION_TYPE_TRANSFER="transfer"
+const val TRANSACTION_TYPE_RECEIVED="received"
+
+//Currency name
+const val CURRENCY_SGD="SGD"
 
 
 
