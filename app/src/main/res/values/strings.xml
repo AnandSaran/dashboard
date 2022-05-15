@@ -18,4 +18,5 @@
     <string name="donald_trump">Donald Trump</string>
     <string name="dashboard">Dashboard</string>
     <string name="account_holder">Account Holder</string>
+    <string name="transactions_title">Your transaction history</string>
 </resources>

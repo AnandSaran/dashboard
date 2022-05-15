@@ -7,16 +7,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class Data(
+data class Sender(
     @NullToEmptyString
-    val transactionId: String,
-    val amount: Double,
+    val accountNo: String,
     @NullToEmptyString
-    val transactionDate: String,
-    @NullToEmptyString
-    val description: String,
-    @NullToEmptyString
-    val transactionType: String,
-    val receipient: Receipient?,
-    val sender: Sender?
+    val accountHolder: String
 ) : Parcelable
