@@ -57,9 +57,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:hint="@string/amount"
         app:layout_constraintLeft_toRightOf="@id/glLeft"
         app:layout_constraintRight_toLeftOf="@id/glRight"
-        android:hint="@string/amount"
         app:layout_constraintTop_toBottomOf="@id/tilPayee">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -73,25 +73,27 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:hint="@string/description"
         app:layout_constraintLeft_toRightOf="@id/glLeft"
         app:layout_constraintRight_toLeftOf="@id/glRight"
-        android:hint="@string/description"
         app:layout_constraintTop_toBottomOf="@id/tilAmount">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:minLines="5" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
-        app:layout_constraintLeft_toRightOf="@id/glLeft"
-        app:layout_constraintRight_toLeftOf="@id/glRight"
-        android:textSize="@dimen/button_text_size"
         android:text="@string/transfer_now"
         android:textAllCaps="false"
+        android:textSize="@dimen/button_text_size"
         app:cornerRadius="@dimen/button_corner_radius"
-        app:layout_constraintBottom_toTopOf="@id/glBottom" />
+        app:layout_constraintBottom_toTopOf="@id/glBottom"
+        app:layout_constraintLeft_toRightOf="@id/glLeft"
+        app:layout_constraintRight_toLeftOf="@id/glRight" />
 </androidx.constraintlayout.widget.ConstraintLayout>
