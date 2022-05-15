@@ -82,6 +82,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/login"
         android:textSize="@dimen/button_text_size"
+        android:backgroundTint="@color/black"
         app:cornerRadius="@dimen/button_corner_radius"
         app:layout_constraintBottom_toTopOf="@id/btnRegister"
         app:layout_constraintLeft_toRightOf="@id/glLeft"
