@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.work.dashboard.BuildConfig.DEBUG
 import com.work.dashboard.network.jsonadapter.NullToEmptyStringAdapter
+import com.work.dashboard.util.constants.URL_BASE
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -36,7 +37,7 @@ object RetrofitClient {
         .build()
 
     private val mRetrofit = Retrofit.Builder()
-        .baseUrl("https://green-thumb-64168.uc.r.appspot.com/")
+        .baseUrl(URL_BASE)
         .addConverterFactory(MoshiConverterFactory.create(moShi))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(okHttpClient)

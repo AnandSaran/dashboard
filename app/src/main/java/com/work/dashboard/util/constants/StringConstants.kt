@@ -28,15 +28,22 @@ const val DP_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 const val DP_DATE = "dd MMM yyyy "
 
 //Symbol
-const val SYMBOL_MINUS="-"
-const val SYMBOL_SINGLE_SPACE=" "
+const val SYMBOL_MINUS = "-"
+const val SYMBOL_SINGLE_SPACE = " "
 
 //Transaction type
-const val TRANSACTION_TYPE_TRANSFER="transfer"
-const val TRANSACTION_TYPE_RECEIVED="received"
+const val TRANSACTION_TYPE_TRANSFER = "transfer"
+const val TRANSACTION_TYPE_RECEIVED = "received"
 
 //Currency name
-const val CURRENCY_SGD="SGD"
+const val CURRENCY_SGD = "SGD"
+
+//Url
+const val URL_BASE = "https://green-thumb-64168.uc.r.appspot.com/"
+const val URL_BALANCE = "balance"
+const val URL_TRANSACTIONS = "transactions"
+const val URL_LOGIN = "login"
+const val URL_REGISTER = "register"
 
 
 
